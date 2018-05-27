@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Star Wars - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Friend Finder</h1>
+      <h3>Well, youve made it this far.</h3>
+      <hr>
+      <!-- <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New Character</button></a> -->
+    </div>
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Wtf is this page all about</strong></h3>
+            <hr>
+
+          </div>
+          <div class="panel-body" id="friendList">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+
+    // Retrieving answerse
+    $(document).ready(function(event) {
+      alert("page loaded")
+      $.get("/get/friend", function(data){
+
+          console.log(data.length)
+          var frndList= document.getElementById("friendList")
+          // var toAdd= document.createDocumentFragment();
+          for(i=0 ; i<data.length ; i++){
+
+            var newIm= document.createElement('img')
+            newIm.id = "friend" +i ;
+            newIm.className = "allfriends"
+            newIm.src= data[i][2]
+            frndList.appendChild(newIm);
+            
+          }
+          console.log(toAdd)
+    //  frndList.appendChild(toAdd)
+      
+      })
+
+
+      });
+
+
+  </script>
+
+</body>
+</html>
